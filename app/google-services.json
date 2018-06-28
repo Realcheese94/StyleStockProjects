@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "372765054288",
+    "firebase_url": "https://stylestock-ccf60.firebaseio.com",
+    "project_id": "stylestock-ccf60",
+    "storage_bucket": "stylestock-ccf60.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:372765054288:android:36080427602129e9",
+        "android_client_info": {
+          "package_name": "com.example.sj.stylestockprojects"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "372765054288-6klho64iuqjfouc4ofmilq1r3p96l4qc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.sj.stylestockprojects",
+            "certificate_hash": "db58e1979c217ad4f95d97f07041c60e9287fcae"
+          }
+        },
+        {
+          "client_id": "372765054288-t4kg3kenh61psidm6vdk2v2bckeopc3c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC77SCQa-G--8QEiu0-niDIovG-eEGgW7c"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "372765054288-t4kg3kenh61psidm6vdk2v2bckeopc3c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
