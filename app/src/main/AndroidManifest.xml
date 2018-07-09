@@ -19,7 +19,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
-        <activity android:name=".AddItem">
+        <activity android:name=".AddItem"
+                   android:theme="@style/Theme.AppCompat.Dialog">
             </activity>
 
     </application>

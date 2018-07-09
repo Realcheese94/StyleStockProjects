@@ -1,18 +1,110 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="600px"
+    android:layout_height="800px"
+    android:layout_gravity="center">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:overScrollMode="always">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+
+        <ImageButton
+            android:layout_width="150dp"
+            android:layout_height="250dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:orientation="vertical"
+                android:overScrollMode="always">
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp" />
+
+                <EditText
+                    android:id="@+id/itemname"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp" />
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp" />
+
+                <EditText
+                    android:id="@+id/brandname"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp" />
+
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp" />
+
+                <EditText
+                    android:id="@+id/itemprice"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp" />
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp" />
+
+                <EditText
+                    android:id="@+id/usenumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp" />
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp" />
+
+                <EditText
+                    android:id="@+id/sizename"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
 
     <Button
-        android:id="@+id/GoaddButton"
+        android:id="@+id/WearButton"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_gravity="bottom" />
+        android:layout_height="40dp"
+        android:layout_above="@+id/AutionButton"
+
+        android:text="착용하기" />
+
+    <Button
+        android:id="@+id/RecommendButton"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:text="추천받기" />
+
+    <Button
+        android:id="@+id/AutionButton"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_above="@+id/RecommendButton"
+        android:text="거래하기" />
 
 
-</LinearLayout>
+
+
+</RelativeLayout>
 
 
 
