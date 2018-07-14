@@ -23,6 +23,14 @@
           }
         },
         {
+          "client_id": "372765054288-822tu8kpc96s4lnuj5fd17gfjhas7ojv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.sj.stylestockprojects",
+            "certificate_hash": "bf97892c7059007e806d4f4680a78a054446bc91"
+          }
+        },
+        {
           "client_id": "372765054288-t4kg3kenh61psidm6vdk2v2bckeopc3c.apps.googleusercontent.com",
           "client_type": 3
         }

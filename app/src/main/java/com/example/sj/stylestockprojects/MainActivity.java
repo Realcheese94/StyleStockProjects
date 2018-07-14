@@ -4,6 +4,7 @@ package com.example.sj.stylestockprojects;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
@@ -13,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
     private Fragment fragment = null;
+    private final int CAMERA_CODE = 1111;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -44,6 +46,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+
 
         loadFragment(new Closet_framework());
         mTextMessage = (TextView) findViewById(R.id.message);
