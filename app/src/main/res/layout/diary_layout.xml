@@ -1,10 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-<TextView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center"
-    android:text="diaery"/>
+    android:layout_height="match_parent">
+
+    <ImageButton
+        android:id="@+id/topImage"
+        android:layout_width="93dp"
+        android:layout_height="147dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="34dp"
+        tools:layout_editor_absoluteX="54dp"
+        tools:layout_editor_absoluteY="122dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="100dp" />
+
+    <ImageButton
+        android:id="@+id/bottomImage"
+        android:layout_width="123dp"
+        android:layout_height="221dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="117dp"
+        android:layout_marginStart="87dp"
+        tools:layout_editor_absoluteX="202dp"
+        tools:layout_editor_absoluteY="50dp"
+        android:layout_marginLeft="87dp"
+        android:layout_alignParentLeft="true" />
+
+    <ImageButton
+        android:id="@+id/otherImage"
+        android:layout_width="129dp"
+        android:layout_height="93dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/shoeImage"
+        android:layout_marginBottom="205dp"
+        android:layout_alignLeft="@+id/shoeImage" />
+
+    <ImageButton
+        android:id="@+id/shoeImage"
+        android:layout_width="91dp"
+        android:layout_height="77dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="55dp"
+        android:layout_marginTop="88dp"
+        tools:layout_editor_absoluteX="234dp"
+        tools:layout_editor_absoluteY="365dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="55dp" />
+
 </RelativeLayout>
