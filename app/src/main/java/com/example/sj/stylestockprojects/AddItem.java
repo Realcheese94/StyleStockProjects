@@ -52,14 +52,14 @@ public class AddItem extends AppCompatActivity {
             layoutParams.dimAmount  = 0.7f;
             setContentView(R.layout.activity_add_item);
 
-            //데이터베이스 레퍼런스 설정 및 선언
+
             firebaseDatabase = FirebaseDatabase.getInstance();
             databaseReference = firebaseDatabase.getReference();
 
 
-            //add 할 이미지 버튼
+
             itemImage = (ImageButton) findViewById(R.id.itemImage);
-            //전송 버튼
+
             registerbutton = (Button)findViewById(R.id.registerButton);
 
 
@@ -82,7 +82,6 @@ public class AddItem extends AppCompatActivity {
 
                     uploadFile();
 
-                    //filename 을 데이터 베이스에 넣기 시작하기.
 
 
                     databaseReference.child("imagepath").push().setValue(filename);
@@ -140,26 +139,26 @@ public class AddItem extends AppCompatActivity {
 
 
     private void uploadFile() {
-        //업로드할 파일이 있으면 수행
+
         if (uri != null) {
-            //업로드 진행 Dialog 보이기
+
             final ProgressDialog progressDialog = new ProgressDialog(this);
             progressDialog.setTitle("업로드중...");
             progressDialog.show();
 
-            //storage
+
             FirebaseStorage storage = FirebaseStorage.getInstance();
 
-            //Unique한 파일명을 만들자.
+
             SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMHH_mmss");
             Date now = new Date();
             filename = formatter.format(now) + ".png";
             //storage 주소와 폴더 파일명을 지정해 준다.
             StorageReference storageRef = storage.getReferenceFromUrl("gs://stylestock-ccf60.appspot.com").child("images/" + filename);
 
-            //올라가거라...
+
             storageRef.putFile(uri)
-                    //성공시
+
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -180,9 +179,9 @@ public class AddItem extends AppCompatActivity {
                     .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-                            @SuppressWarnings("VisibleForTests") //이걸 넣어 줘야 아랫줄에 에러가 사라진다. 넌 누구냐?
+
                                     double progress = (100 * taskSnapshot.getBytesTransferred()) /  taskSnapshot.getTotalByteCount();
-                            //dialog에 진행률을 퍼센트로 출력해 준다
+
                             progressDialog.setMessage("Uploaded " + ((int) progress) + "% ...");
                         }
                     });
