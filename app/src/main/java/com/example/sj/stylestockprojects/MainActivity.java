@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView mTextMessage;
     private Fragment fragment = null;
     private final int CAMERA_CODE = 1111;
+    private String userid;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
