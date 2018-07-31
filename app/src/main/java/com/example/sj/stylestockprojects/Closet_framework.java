@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class Closet_framework extends Fragment {
     FloatingActionButton fab;
     private DatabaseReference mDatabase;
+
     private  int img[] = {
             R.drawable.common_full_open_on_phone,
             R.drawable.common_google_signin_btn_icon_disabled,
@@ -30,12 +32,20 @@ public class Closet_framework extends Fragment {
     private FirebaseDatabase firebaseDatabase ;
     private DatabaseReference ImagePathRef;
     private GridView gridView;
+    private  String username;
 
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Bundle bundle = this.getArguments();
+        if(bundle != null){
+            username = bundle.getString("username","");
+            Log.e("username",username);
+
+        }
 
     }
 
@@ -46,7 +56,11 @@ public class Closet_framework extends Fragment {
     //closet _framework가 실행되면 시작
     @Override
     public void onStart(){
+
+        Log.e("closet_framework","start_Closet_framework");
+        Log.e("옷장_이름시작",username);
         super.onStart();
+
 
     }
 
@@ -57,6 +71,11 @@ public class Closet_framework extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.closet_layout, container, false);
+        /*Bundle bundle = this.getArguments();
+        if(bundle != null){
+            userid = bundle.getString("userid","");
+            Log.e("Closet_userid=",userid);
+        }*/
         fab = (FloatingActionButton)view.findViewById(R.id.AdditemButton);
         firebaseDatabase = FirebaseDatabase.getInstance();
         ImagePathRef = firebaseDatabase.getReference("imagepath");
@@ -72,11 +91,12 @@ public class Closet_framework extends Fragment {
 
 
 
-
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent intent = new Intent(getActivity(),AddItem.class);
+                intent.putExtra("username",username);
                 startActivity(intent);
 
 

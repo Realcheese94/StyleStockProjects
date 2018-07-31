@@ -5,18 +5,25 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -27,6 +34,8 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+
+import org.w3c.dom.Text;
 
 import java.io.File;
 import java.io.IOException;
@@ -39,68 +48,95 @@ public class AddItem extends AppCompatActivity {
     Button registerbutton;
     final int REQ_CODE_SELECT_IMAGE=1;
     Uri uri;
-    String additemname,imgPath,filename;
+    String additemname,imgPath,filename,username;
+    String add_itemcatagory,add_itemname,add_itemprice,add_itemseller,add_itemsize;
+    Spinner itemcatagory;
+    ArrayAdapter spinnerAdapter;
+    EditText itemname,itemprice,itemseller,itemsize;
 
     private FirebaseDatabase firebaseDatabase ;
     private DatabaseReference databaseReference ;
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            requestWindowFeature(Window.FEATURE_NO_TITLE);
-            WindowManager.LayoutParams  layoutParams = new WindowManager.LayoutParams();
-            layoutParams.flags  = WindowManager.LayoutParams.FLAG_DIM_BEHIND;
-            layoutParams.dimAmount  = 0.7f;
-            setContentView(R.layout.activity_add_item);
-
-
-            firebaseDatabase = FirebaseDatabase.getInstance();
-            databaseReference = firebaseDatabase.getReference();
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        WindowManager.LayoutParams  layoutParams = new WindowManager.LayoutParams();
+        layoutParams.flags  = WindowManager.LayoutParams.FLAG_DIM_BEHIND;
+        layoutParams.dimAmount  = 0.7f;
+        setContentView(R.layout.activity_add_item);
 
 
 
-            itemImage = (ImageButton) findViewById(R.id.itemImage);
+        Intent intent = getIntent();
+        username= intent.getStringExtra("username");
+        Log.e("추가하기_사용자이름",username);
 
-            registerbutton = (Button)findViewById(R.id.registerButton);
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference = firebaseDatabase.getReference();
 
+        final String[] data = getResources().getStringArray(R.array.catagory);
+        spinnerAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_expandable_list_item_1,data);
 
-
-
-            itemImage.setOnClickListener(new ImageButton.OnClickListener(){
-
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-                    intent.setType("image/*");
-                    startActivityForResult(Intent.createChooser(intent, "Select Picture"), REQ_CODE_SELECT_IMAGE);
-                }
-            });
-
-
-            registerbutton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                    uploadFile();
-
-
-
-                    databaseReference.child("imagepath").push().setValue(filename);
+        itemcatagory = (Spinner)findViewById(R.id.catagoryspinner);
+        itemImage = (ImageButton) findViewById(R.id.itemImage);
+        registerbutton = (Button)findViewById(R.id.registerButton);
+        itemname = (EditText)findViewById(R.id.itemname);
+        itemprice = (EditText)findViewById(R.id.itemprice);
+        itemseller = (EditText)findViewById(R.id.itemseller);
+        itemsize = (EditText)findViewById(R.id.itemsize);
 
 
 
 
+        itemcatagory.setAdapter(spinnerAdapter);
+
+        itemImage.setOnClickListener(new ImageButton.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                intent.setType("image/*");
+                startActivityForResult(Intent.createChooser(intent, "Select Picture"), REQ_CODE_SELECT_IMAGE);
+            }
+        });
+
+
+        registerbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //카테고리,이름,가격,구매처,사이즈
+                //데이터베이스 storage 에 동시 저장
+                add_itemcatagory = itemcatagory.getSelectedItem().toString();
+                add_itemname = itemname.getText().toString();
+                add_itemprice = itemprice.getText().toString();
+                add_itemseller = itemseller.getText().toString();
+                add_itemsize = itemsize.getText().toString();
+
+                uploadFile();
+
+                Product product = new Product(add_itemname,add_itemprice,add_itemseller,add_itemsize);
+
+                databaseReference.child(username+"/"+add_itemcatagory+"/"+add_itemname).setValue(product);
+
+
+            }
+        });
 
 
 
 
-                }
-            });
+
+    }
+    @Override
+    public void onStart(){
+        // Log.e("Add_closet_start",username);
+        //Log.e("start add","start add");
+        super.onStart();
+    }
 
 
 
-
-
-        }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -109,10 +145,13 @@ public class AddItem extends AppCompatActivity {
 
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
-                ImageView imageView = (ImageView) findViewById(R.id.itemImage);
-                imageView.setImageBitmap(bitmap);
+                //ImageView imageView = (ImageView) findViewById(R.id.itemImage);
+
+
                 additemname =getImageNameToUri(uri);
 
+
+                itemImage.setImageBitmap(bitmap);
 
                 System.out.println("imgpath"+imgPath+"\n");
 
@@ -154,7 +193,7 @@ public class AddItem extends AppCompatActivity {
             Date now = new Date();
             filename = formatter.format(now) + ".png";
             //storage 주소와 폴더 파일명을 지정해 준다.
-            StorageReference storageRef = storage.getReferenceFromUrl("gs://stylestock-ccf60.appspot.com").child("images/" + filename);
+            StorageReference storageRef = storage.getReferenceFromUrl("gs://stylestock-ccf60.appspot.com").child(username).child(add_itemcatagory).child(add_itemname);
 
 
             storageRef.putFile(uri)
@@ -180,7 +219,7 @@ public class AddItem extends AppCompatActivity {
                         @Override
                         public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
 
-                                    double progress = (100 * taskSnapshot.getBytesTransferred()) /  taskSnapshot.getTotalByteCount();
+                            double progress = (100 * taskSnapshot.getBytesTransferred()) /  taskSnapshot.getTotalByteCount();
 
                             progressDialog.setMessage("Uploaded " + ((int) progress) + "% ...");
                         }
@@ -191,7 +230,10 @@ public class AddItem extends AppCompatActivity {
     }
 
 
+
 }
+
+
 
 
 

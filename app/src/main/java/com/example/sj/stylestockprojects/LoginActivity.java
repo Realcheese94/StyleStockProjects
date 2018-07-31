@@ -2,6 +2,7 @@ package com.example.sj.stylestockprojects;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -23,6 +24,7 @@ import java.util.Arrays;
 
 public class LoginActivity extends AppCompatActivity {
     public String userid;
+    public String username;
     private LoginButton loginButton;
     private Button CustomloginButton;
     private CallbackManager callbackManager;
@@ -45,22 +47,25 @@ public class LoginActivity extends AppCompatActivity {
                 userid = loginResult.getAccessToken().getUserId();
                 Log.e("퍼미션 리스트",loginResult.getAccessToken().getPermissions()+"");
 
-
                 GraphRequest request =GraphRequest.newMeRequest(loginResult.getAccessToken() ,
                         new GraphRequest.GraphJSONObjectCallback() {
                             @Override
                             public void onCompleted(JSONObject object, GraphResponse response) {
                                 try {
-                                    Log.e("user profile",object.toString());
+                                    Log.e("로그인회원정보",object.toString());
+                                    Log.e("Login_name",object.getString("name"));
+                                   username = object.getString("name");
+                                   Log.e("Login_username",username);
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
                             }
                         });
                 request.executeAsync();
+
                 Intent intent = new Intent(LoginActivity.this,MainActivity.class);
-                intent.putExtra("id",userid);
-                Log.e("넘어가는 id 값", userid);
+                intent.putExtra("username",userid);
+                Log.e("넘어가는 name 값", userid);
                 startActivity(intent);
             }
 
@@ -76,6 +81,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         callbackManager.onActivityResult(requestCode, resultCode, data);
+
     }
 }
 
