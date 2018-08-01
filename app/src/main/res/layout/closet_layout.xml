@@ -7,26 +7,32 @@
         android:id="@+id/AdditemButton"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
+        android:layout_marginBottom="29dp"
         android:layout_marginEnd="27dp"
-        android:layout_marginTop="33dp"
         android:foregroundGravity="right"
-        android:layout_marginRight="27dp"
         android:src="@drawable/add"
-        android:layout_alignParentRight="true" />
-
-    <GridView
-        android:id="@+id/mygridimageview"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="27dp" />
+    <Spinner
+        android:id="@+id/closet_spinner"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_centerVertical="true"
-        android:columnWidth="90dp"
-        android:horizontalSpacing="10dp"
-        android:layout_marginTop="150dp"
-        android:numColumns="3"
-        android:verticalSpacing="10dp">
+        android:layout_height="50dp">
+    </Spinner>
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    </GridView>
+   <GridView
+       android:id="@+id/closet_grid"
+       android:contextClickable="true"
+       android:numColumns="3"
+       android:stretchMode="columnWidth"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:layout_marginTop="50dp">
+   </GridView>
+</ScrollView>
 
 </RelativeLayout>

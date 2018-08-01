@@ -11,28 +11,39 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.Spinner;
+import android.widget.Toast;
 
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Closet_framework extends Fragment {
     FloatingActionButton fab;
-    private DatabaseReference mDatabase;
-
-    private  int img[] = {
-            R.drawable.common_full_open_on_phone,
-            R.drawable.common_google_signin_btn_icon_disabled,
-            R.drawable.common_google_signin_btn_icon_dark };
-
-
-    private FirebaseDatabase firebaseDatabase ;
-    private DatabaseReference ImagePathRef;
-    private GridView gridView;
+    List<Object> Array = new ArrayList<>();
+    Spinner closet_spinner;
+    GridView closet_grid;
+    private ArrayAdapter<String> adapter;
+    private String catagory="top";
+    private FirebaseDatabase mDatabase;
+    private DatabaseReference mReference;
+    private ChildEventListener mChild;
     private  String username;
+    private ArrayAdapter spinnerAdapter;
+    private String[] data;
 
 
 
@@ -46,6 +57,7 @@ public class Closet_framework extends Fragment {
             Log.e("username",username);
 
         }
+
 
     }
 
@@ -77,18 +89,77 @@ public class Closet_framework extends Fragment {
             Log.e("Closet_userid=",userid);
         }*/
         fab = (FloatingActionButton)view.findViewById(R.id.AdditemButton);
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        ImagePathRef = firebaseDatabase.getReference("imagepath");
-        gridView = (GridView)view.findViewById(R.id.mygridimageview);
-        //gridView.setAdapter(new imageAdapter(getActivity()));
-        imageAdapter imageAdapter = new imageAdapter(
-                getActivity(),
-                R.layout.row,
-                img
-        );
-        gridView.setAdapter(imageAdapter);
+       closet_grid = (GridView)view.findViewById(R.id.closet_grid);
+       closet_spinner = (Spinner)view.findViewById(R.id.closet_spinner);
+       data = getResources().getStringArray(R.array.catagory);
 
 
+        spinnerAdapter = new ArrayAdapter<String>(view.getContext(),android.R.layout.simple_expandable_list_item_1,data);
+        closet_spinner.setAdapter(spinnerAdapter);
+        closet_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+               switch (i){
+                   case 0:
+                       catagory="top";
+                       break;
+                   case 1:
+                       catagory="bottom";
+                       break;
+                   case 2:
+                       catagory="acc";
+                       break;
+                   case 3:
+                       catagory="shoes";
+                       break;
+                   case 4:
+                       catagory="hat";
+                       break;
+               }
+               Log.e("michal_catagory",catagory);
+               mReference = mDatabase.getReference(username+"/"+catagory);
+                mReference.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        adapter.clear();
+
+                        for (DataSnapshot messageData : dataSnapshot.getChildren()){
+                            String ms = messageData.getKey().toString();
+
+                            Array.add(ms);
+                            adapter.add(ms);
+                            Log.e("michal",messageData.toString());
+                        }
+                        adapter.notifyDataSetChanged();
+
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
+
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+
+
+        adapter = new ArrayAdapter<String>(this.getContext(),android.R.layout.simple_gallery_item,new ArrayList<String>());
+       closet_grid.setAdapter(adapter);
+
+
+        Log.e("michal","sc");
+        mDatabase = FirebaseDatabase.getInstance();
 
 
         fab.setOnClickListener(new View.OnClickListener() {
@@ -105,65 +176,14 @@ public class Closet_framework extends Fragment {
 
 
 
-
-
-
-
-
         return view;
 
 
 
     }
-    public class imageAdapter extends BaseAdapter{
-        Context context;
-        int layout;
-        int img[];
-        LayoutInflater inf;
-
-        public imageAdapter(Context context, int layout, int[] img) {
-            this.context = context;
-            this.layout = layout;
-            this.img = img;
-            inf = (LayoutInflater) context.getSystemService
-                    (Context.LAYOUT_INFLATER_SERVICE);
-        }
-
-        @Override
-        public int getCount() {
-            return img.length;
-        }
-
-        @Override
-        public Object getItem(int position) {
-            return img[position];
-        }
-
-        @Override
-        public long getItemId(int position) {
-            return position;
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            if (convertView == null)
-                convertView = inf.inflate(layout, null);
-            ImageView iv = (ImageView) convertView.findViewById(R.id.imageView1);
-            iv.setImageResource(img[position]);
-            iv.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    ImageView imageView = (ImageView) v;
-                    imageView.setImageResource(R.drawable.common_google_signin_btn_icon_dark_focused);
-                }
-            });
-
-            return convertView;
-        }
-
-    } // end of class
 
 
 }
+
 
 
