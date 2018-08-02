@@ -115,9 +115,6 @@ public class AddItem extends AppCompatActivity {
 
                 uploadFile();
 
-                Product product = new Product(add_itemname,add_itemprice,add_itemseller,add_itemsize);
-
-                databaseReference.child(username+"/"+add_itemcatagory+"/"+add_itemname).setValue(product);
 
 
             }
@@ -201,6 +198,10 @@ public class AddItem extends AppCompatActivity {
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            Uri downloadUrl = taskSnapshot.getDownloadUrl();
+                            Product product = new Product(add_itemname,add_itemprice,add_itemseller,add_itemsize,downloadUrl.toString());
+
+                            databaseReference.child(username+"/"+add_itemcatagory+"/"+add_itemname).setValue(product);
 
                             progressDialog.dismiss(); //업로드 진행 Dialog 상자 닫기
                             Toast.makeText(getApplicationContext(), "업로드 완료!", Toast.LENGTH_SHORT).show();
