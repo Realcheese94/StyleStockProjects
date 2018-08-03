@@ -12,6 +12,6 @@ public class Recommend_framework extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.recommend_layout,null);
-    }
+        return inflater.inflate(R.layout.recommend_layout, null);
+    }//제작
 }
