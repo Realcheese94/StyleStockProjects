@@ -93,11 +93,7 @@ public class Closet_framework extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.closet_layout, container, false);
-        /*Bundle bundle = this.getArguments();
-        if(bundle != null){
-            userid = bundle.getString("userid","");
-            Log.e("Closet_userid=",userid);
-        }*/
+        
         fab = (FloatingActionButton)view.findViewById(R.id.AdditemButton);
         //closet_grid = (GridView)view.findViewById(R.id.closet_grid);
         closet_spinner = (Spinner)view.findViewById(R.id.closet_spinner);
