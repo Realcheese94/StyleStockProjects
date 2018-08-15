@@ -39,12 +39,12 @@ import java.util.List;
 
 public class Closet_framework extends Fragment {
     FloatingActionButton fab;
-    List<Object> Array = new ArrayList<>();
+
     private List<Product> Products = new ArrayList<>();
-    private List<String> uidLists = new ArrayList<>();
+
     Spinner closet_spinner;
     RecyclerView recyclerView;
-    private ArrayAdapter<String> adapter;
+
     private String catagory="top";
     private FirebaseDatabase mDatabase;
     private DatabaseReference mReference;
@@ -53,8 +53,6 @@ public class Closet_framework extends Fragment {
     private ArrayAdapter spinnerAdapter;
     private String[] data;
 
-    private ArrayList<String> imageurl;
-    private ArrayList<Bitmap> picArr = new ArrayList<Bitmap>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -74,8 +72,6 @@ public class Closet_framework extends Fragment {
 
 
 
-
-    //closet _framework가 실행되면 시작
     @Override
     public void onStart(){
 
@@ -93,7 +89,7 @@ public class Closet_framework extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.closet_layout, container, false);
-        
+
         fab = (FloatingActionButton)view.findViewById(R.id.AdditemButton);
         //closet_grid = (GridView)view.findViewById(R.id.closet_grid);
         closet_spinner = (Spinner)view.findViewById(R.id.closet_spinner);
@@ -105,9 +101,14 @@ public class Closet_framework extends Fragment {
         recyclerView.setLayoutManager(new GridLayoutManager(this.getContext(),3));
         final ClosetRecycleViewAdapter closetRecycleViewAdapter = new ClosetRecycleViewAdapter();
         recyclerView.setAdapter(closetRecycleViewAdapter);
+        recyclerView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.e("michal","setonclick");
+            }
+        });
 
 
-        imageurl = new ArrayList<String>();
         spinnerAdapter = new ArrayAdapter<String>(view.getContext(),android.R.layout.simple_expandable_list_item_1,data);
         closet_spinner.setAdapter(spinnerAdapter);
         closet_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -137,27 +138,14 @@ public class Closet_framework extends Fragment {
                 mReference.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        //adapter.clear();
-                        //imageurl.clear();
+
                         Products.clear();
 
                         for (DataSnapshot messageData : dataSnapshot.getChildren()){
                             Product product = messageData.getValue(Product.class);
                             Products.add(product);
                             Log.e("michal_pro",Products.toString());
-                            //String ms = messageData.getKey().toString();
 
-
-
-                            //ms는 image 제목
-                           // imageurl.add(ms);
-                           // Log.e("michal_ms",ms);
-                          //  Log.e("michal_url",imageurl.toString());
-
-                            //Array.add(ms);
-                            //adapter.add(ms);
-                            //key는 제목 value는 모든 meta 데이터를 받아온다.
-                           // Log.e("michal",messageData.toString());
                         }
                         closetRecycleViewAdapter.notifyDataSetChanged();
 
@@ -178,11 +166,6 @@ public class Closet_framework extends Fragment {
 
             }
         });
-
-
-
-       //adapter = new ArrayAdapter<String>(this.getContext(),android.R.layout.simple_gallery_item,new ArrayList<String>());
-
 
 
         Log.e("michal","sc");
@@ -238,6 +221,7 @@ public class Closet_framework extends Fragment {
                 imageView = (ImageView)view.findViewById(R.id.item_image);
             }
         }
+
     }
 
 

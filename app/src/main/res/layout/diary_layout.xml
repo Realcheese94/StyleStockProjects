@@ -1,57 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
 
     <ImageButton
         android:id="@+id/topImage"
-        android:layout_width="93dp"
-        android:layout_height="147dp"
-        android:layout_alignParentStart="true"
+        android:layout_width="85dp"
+        android:layout_height="80dp"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="34dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
         tools:layout_editor_absoluteX="54dp"
-        tools:layout_editor_absoluteY="122dp"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="100dp" />
+        tools:layout_editor_absoluteY="122dp" />
 
     <ImageButton
         android:id="@+id/bottomImage"
-        android:layout_width="123dp"
-        android:layout_height="221dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="117dp"
-        android:layout_marginStart="87dp"
+        android:layout_width="86dp"
+        android:layout_height="105dp"
+        android:layout_below="@+id/topImage"
+        android:layout_gravity="center"
+        android:layout_marginTop="18dp"
         tools:layout_editor_absoluteX="202dp"
-        tools:layout_editor_absoluteY="50dp"
-        android:layout_marginLeft="87dp"
-        android:layout_alignParentLeft="true" />
+        tools:layout_editor_absoluteY="50dp" />
 
     <ImageButton
         android:id="@+id/otherImage"
-        android:layout_width="129dp"
-        android:layout_height="93dp"
+        android:layout_width="73dp"
+        android:layout_height="111dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/shoeImage"
-        android:layout_marginBottom="205dp"
-        android:layout_alignLeft="@+id/shoeImage" />
+        android:layout_gravity="center" />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
 
     <ImageButton
         android:id="@+id/shoeImage"
         android:layout_width="91dp"
         android:layout_height="77dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginEnd="55dp"
-        android:layout_marginTop="88dp"
-        tools:layout_editor_absoluteX="234dp"
-        tools:layout_editor_absoluteY="365dp"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="55dp" />
+        android:layout_gravity="center"
+        android:layout_marginLeft="150dp"
+    />
 
-</RelativeLayout>
+    <ImageButton
+        android:id="@+id/accImage"
+        android:layout_width="91dp"
+        android:layout_height="77dp"
+        android:layout_gravity="center" />
+</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+        </Spinner>
+
+
+
+    </LinearLayout>
+
+</LinearLayout>
