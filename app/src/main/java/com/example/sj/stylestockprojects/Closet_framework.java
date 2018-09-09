@@ -40,17 +40,17 @@ import java.util.List;
 public class Closet_framework extends Fragment {
     FloatingActionButton fab;
 
-    private List<Product> Products = new ArrayList<>();
+    private static List<Product> Products = new ArrayList<>();
 
     Spinner closet_spinner;
     RecyclerView recyclerView;
 
-    private String catagory="top";
+    public static String catagory="top";
     private FirebaseDatabase mDatabase;
     private DatabaseReference mReference;
     private ChildEventListener mChild;
     private  String username;
-    private ArrayAdapter spinnerAdapter;
+    public static ArrayAdapter spinnerAdapter;
     private String[] data;
 
 
@@ -61,7 +61,7 @@ public class Closet_framework extends Fragment {
         Bundle bundle = this.getArguments();
         if(bundle != null){
             username = bundle.getString("username","");
-            Log.e("username",username);
+            Log.e("closet_username",username);
 
         }
 
@@ -117,18 +117,18 @@ public class Closet_framework extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 switch (i){
-                    case 0:
-                        catagory="top";
-                        break;
-                    case 1:
-                        catagory="bottom";
-                        break;
-                    case 2:
-                        catagory="acc";
-                        break;
-                    case 3:
-                        catagory="shoes";
-                        break;
+                        case 0:
+                            catagory="top";
+                            break;
+                        case 1:
+                            catagory="bottom";
+                            break;
+                        case 2:
+                            catagory="acc";
+                            break;
+                        case 3:
+                            catagory="shoes";
+                            break;
                     case 4:
                         catagory="hat";
                         break;
@@ -193,7 +193,7 @@ public class Closet_framework extends Fragment {
     }
 
 
-    class ClosetRecycleViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
+    public static class ClosetRecycleViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
         @NonNull
         @Override
