@@ -40,12 +40,10 @@ import java.util.List;
 public class Closet_framework extends Fragment {
     FloatingActionButton fab;
 
-    private List<Product> Products = new ArrayList<>();
+    private ArrayList<Product> Products = new ArrayList<>();
 
     Spinner closet_spinner;
     RecyclerView recyclerView;
-
-    int pos=0;
 
     private String catagory="top";
     private FirebaseDatabase mDatabase;
@@ -54,6 +52,8 @@ public class Closet_framework extends Fragment {
     private  String username;
     private ArrayAdapter spinnerAdapter;
     private String[] data;
+
+    private Bundle bundle=new Bundle();
 
 
     @Override
@@ -68,9 +68,6 @@ public class Closet_framework extends Fragment {
         }
 
     }
-
-
-
 
     @Override
     public void onStart(){
@@ -145,7 +142,6 @@ public class Closet_framework extends Fragment {
                             Product product = messageData.getValue(Product.class);
                             Products.add(product);
                             Log.e("michal_pro",Products.toString());
-
                         }
                         closetRecycleViewAdapter.notifyDataSetChanged();
 
@@ -175,12 +171,9 @@ public class Closet_framework extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent intent = new Intent(getActivity(),AddItem.class);
                 intent.putExtra("username",username);
                 startActivity(intent);
-
-
             }
         });
 
@@ -201,7 +194,6 @@ public class Closet_framework extends Fragment {
 
         @Override
         public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-            pos = position;
             Glide.with(holder.itemView.getContext()).load(Products.get(position).product_url).into(((CustomViewHolder)holder).imageView);
         }
 
@@ -215,19 +207,30 @@ public class Closet_framework extends Fragment {
 
             public CustomViewHolder(View view) {
                 super(view);
-                mDatabase = FirebaseDatabase.getInstance();
-                mReference = mDatabase.getReference(username+"/"+catagory);
                 imageView = (ImageView)view.findViewById(R.id.item_image);
                 imageView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Toast.makeText(getActivity(),catagory,Toast.LENGTH_LONG).show();
+                        int pos=getLayoutPosition();
+                        bundle.clear();
+
+                        Intent intent = new Intent(getActivity(),ViewItem.class);
+                        bundle.putString("brand",Products.get(pos).product_brand);
+                        bundle.putString("price",Products.get(pos).product_price);
+                        bundle.putString("name",Products.get(pos).product_name);
+                        bundle.putString("size",Products.get(pos).product_size);
+                        bundle.putString("url",Products.get(pos).product_url);
+
+                        intent.putExtras(bundle);
+                        startActivity(intent);
+
                     }
                 });
             }
         }
 
     }
+
 
 
 }

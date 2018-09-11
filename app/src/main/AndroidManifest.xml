@@ -34,6 +34,10 @@
             android:name=".AddItem"
             android:theme="@style/Theme.AppCompat.Light.Dialog" />
 
+        <activity
+            android:name=".ViewItem"
+            android:theme="@style/Theme.AppCompat.Light.Dialog" />
+
         <activity android:name=".LoginActivity"></activity>
 
         <provider
