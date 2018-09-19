@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">StyleStockProjects</string>
+    <string name="title_home">옷장</string>
+    <string name="title_dashboard">다이어리</string>
+    <string name="title_notifications">중고거래</string>
+    <string name="title_mypage">추천쇼핑</string>
+    <string name="title_mypage2">마이페이지</string>
+    <string name="facebook_app_id">343660512836508</string>
+    <string name="kakao_app_key">4e93c40483b1f3380575e522b4ce3dc3</string>
+
+</resources>
