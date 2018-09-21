@@ -11,16 +11,42 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
+import com.example.sj.stylestockprojects.Firebase.PersonUpload;
 import com.example.sj.stylestockprojects.Userinfo.UserDTO;
 
 public class Mypage_framework extends Fragment {
 
+    private String id;
     private String user_name;
     private String user_gender;
     private int user_age;
     private EditText name;
     private EditText age;
+    private UserDTO userDTO = new UserDTO();
+    final PersonUpload personUpload = new PersonUpload();
+
+
+    @Override
+    public void onStart(){
+
+        super.onStart();
+
+
+    }
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        Bundle bundle = this.getArguments();
+        if(bundle != null){
+            id = bundle.getString("username","");
+            Log.e("username",id);
+
+        }
+
+    }
 
     @Nullable
     @Override
@@ -38,7 +64,7 @@ public class Mypage_framework extends Fragment {
        saveButton.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-               UserDTO userDTO = new UserDTO();
+
                if(malerb.isChecked()){
                    user_gender = malerb.getText().toString();
                }
@@ -52,6 +78,13 @@ public class Mypage_framework extends Fragment {
                userDTO.setAge(user_age);
                userDTO.setGender(user_gender);
                Log.e("userinfo",userDTO.toString());
+
+               personUpload.setPath("info");
+               personUpload.setUsername(id);
+               personUpload.setUserDTO(userDTO);
+               personUpload.PersoninfoUpload();
+
+               Toast.makeText(getActivity(),"성공적으로 저장되었습니다.",Toast.LENGTH_SHORT).show();
 
            }
        });
