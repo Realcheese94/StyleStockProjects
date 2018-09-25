@@ -25,41 +25,6 @@ public class PersonUpload {
         databaseReference.child(username+"/"+path+"/").setValue(userDTO);
     }
 
-
-
-
-    public UserDTO PersoninfoGet(){
-
-        final UserDTO userDTO = new UserDTO();
-        databaseReference = firebaseDatabase.getReference(username+"/info/");
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-             for (DataSnapshot msg : dataSnapshot.getChildren()){
-                 String msg2 = msg.getValue().toString();
-                 userinfo.add(msg2);
-                 userDTO.setName(userinfo.get(0));
-                 userDTO.setGender(userinfo.get(1));
-                 userDTO.setAge(Integer.parseInt(userinfo.get(2)));
-
-             }
-
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-
-
-        });
-
-
-
-        return userDTO;
-    }
-
     public String getPath() {
         return path;
     }

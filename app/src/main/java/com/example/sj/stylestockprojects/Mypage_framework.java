@@ -15,6 +15,11 @@ import android.widget.Toast;
 
 import com.example.sj.stylestockprojects.Firebase.PersonUpload;
 import com.example.sj.stylestockprojects.Userinfo.UserDTO;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class Mypage_framework extends Fragment {
 
@@ -26,6 +31,7 @@ public class Mypage_framework extends Fragment {
     private EditText age;
     private UserDTO userDTO = new UserDTO();
     final PersonUpload personUpload = new PersonUpload();
+
 
 
     @Override
@@ -58,6 +64,9 @@ public class Mypage_framework extends Fragment {
        Button saveButton = (Button)view.findViewById(R.id.infosave_button);
        final RadioButton malerb = (RadioButton)view.findViewById(R.id.male_gender);
        final RadioButton femalerb = (RadioButton)view.findViewById(R.id.femal_gender);
+
+
+
 
 
 
