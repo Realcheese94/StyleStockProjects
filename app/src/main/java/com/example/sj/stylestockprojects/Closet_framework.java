@@ -215,6 +215,8 @@ public class Closet_framework extends Fragment {
                         bundle.clear();
 
                         Intent intent = new Intent(getActivity(),ViewItem.class);
+                        bundle.putString("username",username);
+                        bundle.putString("catagory",catagory);
                         bundle.putString("brand",Products.get(pos).product_brand);
                         bundle.putString("price",Products.get(pos).product_price);
                         bundle.putString("name",Products.get(pos).product_name);

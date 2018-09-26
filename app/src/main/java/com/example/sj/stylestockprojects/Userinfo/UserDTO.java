@@ -3,9 +3,9 @@ package com.example.sj.stylestockprojects.Userinfo;
 public class UserDTO {
     private String name;
     private String gender;
-    private int age;
+    private String age;
 
-    public UserDTO(String name,String gender,int age){
+    public UserDTO(String name,String gender,String age){
         this.name= name;
         this.gender = gender;
         this.age = age;
@@ -22,7 +22,7 @@ public class UserDTO {
         return gender;
     }
 
-    public int getAge() {
+    public String getAge() {
         return age;
     }
 
@@ -34,7 +34,8 @@ public class UserDTO {
         this.gender = gender;
     }
 
-    public void setAge(int age) {
+    public void setAge(String age) {
         this.age = age;
     }
+
 }

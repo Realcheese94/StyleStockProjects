@@ -12,8 +12,8 @@ import java.util.ArrayList;
 
 public class PersonUpload {
     private String path;
-    private com.google.firebase.database.FirebaseDatabase firebaseDatabase;
-    private DatabaseReference databaseReference;
+    public com.google.firebase.database.FirebaseDatabase firebaseDatabase;
+    public DatabaseReference databaseReference;
     private UserDTO userDTO;
     private  String username;
     private ArrayList<String> userinfo;
@@ -23,7 +23,9 @@ public class PersonUpload {
         firebaseDatabase = com.google.firebase.database.FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference();
         databaseReference.child(username+"/"+path+"/").setValue(userDTO);
+
     }
+
 
     public String getPath() {
         return path;
