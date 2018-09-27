@@ -20,6 +20,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    subprojects {
+        repositories {
+            mavenCentral()
+            maven { url 'http://devrepo.kakao.com:8088/nexus/content/groups/public/' }
+        }
+    }
 }
 
 dependencies {
@@ -39,7 +45,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation 'com.facebook.android:facebook-android-sdk:4.+'
     implementation 'com.firebaseui:firebase-ui-storage:0.6.0'
-
+    implementation group: 'com.kakao.sdk', name: 'usermgmt', version: project.KAKAO_SDK_VERSION
 }
 
 

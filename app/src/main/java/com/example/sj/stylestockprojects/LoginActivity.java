@@ -21,6 +21,13 @@ import com.facebook.GraphResponse;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+import com.kakao.auth.ISessionCallback;
+import com.kakao.auth.Session;
+import com.kakao.network.ErrorResult;
+import com.kakao.usermgmt.UserManagement;
+import com.kakao.usermgmt.callback.MeResponseCallback;
+import com.kakao.usermgmt.response.model.UserProfile;
+import com.kakao.util.exception.KakaoException;
 
 import org.json.JSONObject;
 
@@ -33,7 +40,11 @@ public class LoginActivity extends AppCompatActivity {
     public String username;
     private LoginButton loginButton;
     private Button CustomloginButton;
+    private com.kakao.usermgmt.LoginButton kakao_login;
     private CallbackManager callbackManager;
+    private SessionCallback callback;
+    private String nickname,id;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,6 +93,13 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onCancel() { }
         });
+
+        //카카오 로그인
+        kakao_login = (com.kakao.usermgmt.LoginButton)findViewById(R.id.com_kakao_login);
+
+        callback = new SessionCallback();   //kakao login callback
+        Session.getCurrentSession().addCallback(callback);
+
     }
 
     @Override
@@ -89,6 +107,74 @@ public class LoginActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         callbackManager.onActivityResult(requestCode, resultCode, data);
 
+    }
+
+    private class SessionCallback implements ISessionCallback {
+
+        @Override
+        public void onSessionOpened() {
+            requestMe();  // 세션 연결성공 시 redirectSignupActivity() 호출
+        }
+        @Override
+        public void onSessionOpenFailed(KakaoException exception) {
+            if(exception != null) {
+                Log.e("ex", String.valueOf(exception));
+            }
+            setContentView(R.layout.activity_login); // 세션 연결이 실패했을때
+        }                                            // 로그인화면을 다시 불러옴
+    }
+    //사용자 정보요청
+    public void requestMe() {
+
+        // 사용자정보 요청 결과에 대한 Callback
+        UserManagement.requestMe(new MeResponseCallback() {
+            // 세션 오픈 실패. 세션이 삭제된 경우,
+            @Override
+            public void onSessionClosed(ErrorResult errorResult) {
+                Log.e("SessionCallback :: ", "onSessionClosed : " + errorResult.getErrorMessage());
+            }
+
+            // 회원이 아닌 경우,
+            @Override
+            public void onNotSignedUp() {
+                Log.e("SessionCallback :: ", "onNotSignedUp");
+            }
+
+            // 사용자정보 요청에 성공한 경우,
+            @Override
+            public void onSuccess(UserProfile userProfile) {
+                Log.e("SessionCallback :: ", "onSuccess");
+
+                nickname = userProfile.getNickname();
+                String profileImagePath = userProfile.getProfileImagePath();
+                String thumnailPath = userProfile.getThumbnailImagePath();
+                String UUID = userProfile.getUUID();
+                long id_long = userProfile.getId();
+                id=String.valueOf(id_long);
+
+                Log.e("Profile : ", nickname + "");
+                Log.e("Profile : ", profileImagePath  + "");    //얘넨 필요음슴
+                Log.e("Profile : ", thumnailPath + "");         //얘넨 필요음슴
+                Log.e("Profile : ?", UUID + "");                //얘는 혹시나
+                Log.e("Profile : !", id + "");
+                redirectMainActivity(id,nickname);
+            }
+
+            // 사용자 정보 요청 실패
+            @Override
+            public void onFailure(ErrorResult errorResult) {
+                Log.e("SessionCallback :: ", "onFailure : " + errorResult.getErrorMessage());
+            }
+
+        });
+
+    }
+    private void redirectMainActivity(String id, String nickname) {
+        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+        intent.putExtra("username", id);
+        Log.e("kakao 넘어가는 name 값", id);
+        Log.e("kakao 넘어가는 nickname 값", nickname);
+        startActivity(intent);
     }
 
     private void getHashKey(){
