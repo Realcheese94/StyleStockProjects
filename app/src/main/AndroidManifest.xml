@@ -7,7 +7,6 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
 
-
     <application
         android:name=".GlobalApplication"
         android:allowBackup="true"
@@ -16,7 +15,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
         <meta-data
             android:name="com.kakao.sdk.AppKey"
             android:value="@string/kakao_app_key" />
@@ -24,25 +25,20 @@
         <activity
             android:name=".SplashActivity"
             android:label="@string/app_name">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
         <activity android:name=".MainActivity" />
         <activity
             android:name=".AddItem"
             android:theme="@style/Theme.AppCompat.Light.Dialog" />
-
         <activity
             android:name=".ViewItem"
             android:theme="@style/Theme.AppCompat.Light.Dialog" />
-
-        <activity android:name=".LoginActivity"></activity>
+        <activity android:name=".LoginActivity" />
 
         <provider
             android:name="android.support.v4.content.FileProvider"
@@ -53,5 +49,9 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_path" />
         </provider>
+
+        <activity android:name=".SelectedItem"
+            android:theme="@style/Theme.AppCompat.Light.Dialog"></activity>
     </application>
+
 </manifest>

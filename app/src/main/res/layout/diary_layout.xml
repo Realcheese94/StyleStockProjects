@@ -13,64 +13,81 @@
         android:layout_weight="3">
 
         <ImageView
+            android:id="@+id/hat_view"
+            android:layout_width="63dp"
+            android:layout_height="91dp"
+
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="29dp"
+
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="29dp" />
+
+        <ImageView
             android:id="@+id/top_view"
             android:layout_width="63dp"
-            android:layout_height="214dp"
-            android:layout_alignParentBottom="true"
+            android:layout_height="130dp"
 
-            android:layout_marginBottom="166dp"
-            android:src="@drawable/ic_home_black_24dp" />
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="122dp"
+            android:layout_marginTop="30dp"
+
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="122dp" />
 
 
         <ImageView
             android:id="@+id/bottom_view"
-            android:layout_width="110dp"
-            android:layout_height="43dp"
+            android:layout_width="71dp"
+            android:layout_height="118dp"
 
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="100dp"
-            android:src="@drawable/ic_home_black_24dp" />
+            android:layout_alignParentBottom="true"
+            android:layout_alignStart="@+id/top_view"
+            android:layout_marginBottom="30dp"
+
+            android:layout_alignLeft="@+id/top_view" />
 
         <ImageView
             android:id="@+id/acc_view"
-            android:layout_width="103dp"
-            android:layout_height="83dp"
-            android:layout_alignParentBottom="true"
+            android:layout_width="86dp"
+            android:layout_height="115dp"
+            android:layout_alignBottom="@+id/top_view"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:layout_marginBottom="184dp"
-            android:layout_marginEnd="60dp"
-            android:layout_marginRight="60dp"
-            android:src="@drawable/ic_home_black_24dp" />
+
+            android:layout_marginEnd="69dp"
+            android:layout_marginRight="69dp" />
 
         <ImageView
             android:id="@+id/shoes_view"
-            android:layout_width="100dp"
-            android:layout_height="54dp"
+            android:layout_width="117dp"
+            android:layout_height="116dp"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginEnd="107dp"
-            android:layout_marginTop="165dp"
-            android:src="@drawable/ic_home_black_24dp"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="107dp" />
+            android:layout_below="@+id/hat_view"
+
+            android:layout_marginEnd="48dp"
+            android:layout_marginRight="48dp"
+            android:layout_marginTop="-35dp" />
     </RelativeLayout>
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_weight="4">
-    <Spinner
-        android:id="@+id/diary_spinner"
-        android:layout_width="match_parent"
-        android:layout_height="50dp">
-    </Spinner>
-
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/diary_recycle"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="50dp"></android.support.v7.widget.RecyclerView>
+        android:layout_weight="4">
+        <Spinner
+            android:id="@+id/diary_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+        </Spinner>
 
-</RelativeLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/diary_recycle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="50dp"></android.support.v7.widget.RecyclerView>
+
+    </RelativeLayout>
 </LinearLayout>

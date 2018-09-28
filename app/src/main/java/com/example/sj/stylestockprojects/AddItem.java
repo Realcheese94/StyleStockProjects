@@ -1,7 +1,9 @@
 package com.example.sj.stylestockprojects;
 
 import android.Manifest;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -52,6 +54,7 @@ public class AddItem extends AppCompatActivity {
     ImageButton itemImage;
     Button registerbutton;
     final int REQ_CODE_SELECT_IMAGE=1;
+    final int REQ_CODE_CAMERA = 2;
     Uri uri;
     String additemname,imgPath=null,filename,username;
     String add_itemcatagory,add_itemname,add_itemprice,add_itemseller,add_itemsize;
@@ -99,11 +102,20 @@ public class AddItem extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
+/*)
                 Intent intent = new Intent(Intent.ACTION_PICK);
                 intent.setType(android.provider.MediaStore.Images.Media.CONTENT_TYPE);
                 intent.setData(android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 intent.setType("image/*");
-                startActivityForResult(Intent.createChooser(intent, "Select Picture"), REQ_CODE_SELECT_IMAGE);
+
+
+
+
+                startActivityForResult(Intent.createChooser(intent, "선택해주세요"), REQ_CODE_SELECT_IMAGE);
+
+   Intent intent1 = new Intent(AddItem.this,SelectedItem.class);
+                startActivity(intent1);
+*/
             }
         });
 
@@ -226,6 +238,35 @@ public class AddItem extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "파일을 먼저 선택하세요.", Toast.LENGTH_SHORT).show();
         }
     }
+    private void makeDialog(){
+        AlertDialog.Builder alt_bld = new AlertDialog.Builder(AddItem.this,R.style.Theme_AppCompat_Light_Dialog_Alert);
+        alt_bld.setTitle("사진 업로드 입니다.").setIcon(R.drawable.add).setCancelable(false).setPositiveButton("사진촬영", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                takePhoto();
+            }
+        }).setNeutralButton("앨범선택", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                selectAlbum();
+            }
+        }).setNegativeButton("취소", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.cancel();
+            }
+        });
+        AlertDialog alert = alt_bld.create();
+        alert.show();
+
+
+    }
+    public void selectAlbum(){
+        Intent intent = new Intent(Intent.ACTION_PICK);
+        intent.setType(MediaStore.Images.Media.CONTENT_TYPE);
+        intent.setType("images/*");
+        startActivityForResult(intent,FROM);
+    }
 
     protected void requestPermissionDenial(){
         if(ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) !=
@@ -254,7 +295,11 @@ public class AddItem extends AppCompatActivity {
                 }
                 return;
             }
+
+
         }
+
+
     }
 
 
