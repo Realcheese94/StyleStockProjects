@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="catagory">
+        <item>top</item>
+        <item>bottom</item>
+        <item>acc</item>
+        <item>shoes</item>
+        <item>hat</item>
+    </string-array>
+</resources>

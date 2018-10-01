@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="이름"
+        android:textAlignment="center"/>
+    <EditText
+        android:id="@+id/user_name"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="이름을 입력해주세요"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="나이"
+        android:textAlignment="center"/>
+    <EditText
+        android:id="@+id/user_age"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:maxLength="2"
+        android:hint="나이를 입력해주세요"
+        android:inputType="number"/>
+    <RadioGroup
+        android:id="@+id/user_gender"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+        <RadioButton
+            android:id="@+id/male_gender"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:checked="true"
+            android:text="남자"/>
+        <RadioButton
+            android:id="@+id/femal_gender"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="여자"/>
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/infosave_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="저장 하기" />
+
+    <Button
+        android:id="@+id/kakao_logout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="카카오톡 로그아웃"
+        android:layout_marginTop="80dp"
+        android:backgroundTint="@color/com_kakao_button_background_press"/>
+
+
+</LinearLayout>
