@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -78,7 +79,7 @@ public class ViewItem extends AppCompatActivity {
 
         itemcatagory.setAdapter(spinnerAdapter);
 
-        Glide.with(this).load(url).apply(new RequestOptions().override(180,280)).into(itemImage);
+        Glide.with(this).load(url).apply(new RequestOptions().override(210,280)).into(itemImage);
         itembrand.setText(brand);
         itemprice.setText(price);
         itemname.setText(name);
@@ -97,7 +98,7 @@ public class ViewItem extends AppCompatActivity {
                 Map<String, Object> childUpdates = new HashMap<>();
                 childUpdates.put(username+"/"+catagory+"/"+update_itemname,postvalue);
                 databaseReference.updateChildren(childUpdates);
-
+                Log.d("why?",username+" /"+catagory);
                 Toast.makeText(getApplicationContext(),"수정되었습니다",Toast.LENGTH_SHORT);
 
                 finish();

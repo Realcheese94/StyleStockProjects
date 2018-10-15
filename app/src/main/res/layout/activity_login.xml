@@ -15,19 +15,20 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:gravity="center">
+        android:gravity="center"
+        android:layout_marginTop="200dp">
+
 
         <com.facebook.login.widget.LoginButton
             android:id="@+id/buttonId"
             android:layout_width="245dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="220dp" />
+            android:layout_height="50dp"/>
 
         <com.kakao.usermgmt.LoginButton
             android:id="@+id/com_kakao_login"
             android:layout_width="245dp"
             android:layout_height="50dp"
-            android:layout_marginTop="20dp" />
+            android:layout_marginTop="20dp"/>
 
         <com.nhn.android.naverlogin.ui.view.OAuthLoginButton
             android:id="@+id/buttonOAuthLoginImg"

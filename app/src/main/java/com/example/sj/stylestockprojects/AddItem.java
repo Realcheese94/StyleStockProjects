@@ -50,7 +50,6 @@ import java.util.Date;
 
 
 public class AddItem extends AppCompatActivity {
-
     ImageButton itemImage;
     Button registerbutton;
     final int REQ_CODE_SELECT_IMAGE=1;
@@ -72,8 +71,6 @@ public class AddItem extends AppCompatActivity {
         layoutParams.flags  = WindowManager.LayoutParams.FLAG_DIM_BEHIND;
         layoutParams.dimAmount  = 0.7f;
         setContentView(R.layout.activity_add_item);
-        requestPermissionDenial();
-        //ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.READ_CONTACTS},MY_PERMISSIONS_REQUEST_READ_CONTACTS);
 
         Intent intent = getIntent();
         username= intent.getStringExtra("username");
@@ -108,9 +105,6 @@ public class AddItem extends AppCompatActivity {
                 intent.setData(android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 intent.setType("image/*");
 
-
-
-
                 startActivityForResult(Intent.createChooser(intent, "선택해주세요"), REQ_CODE_SELECT_IMAGE);
 
 
@@ -144,7 +138,6 @@ public class AddItem extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == REQ_CODE_SELECT_IMAGE && resultCode == RESULT_OK && data != null && data.getData() != null) {
-            requestPermissionDenial();
             uri = data.getData();            //uri 이미지 경로
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
@@ -168,11 +161,8 @@ public class AddItem extends AppCompatActivity {
         String[] proj = {MediaStore.Images.Media.DATA};
         //Cursor cursor = managedQuery(data, proj, null, null, null);
         Cursor cursor = getContentResolver().query(data, proj, null, null, null);
-        Log.d("index0", String.valueOf(cursor));
         int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-        Log.d("index1", String.valueOf(column_index));
         cursor.moveToFirst();
-        Log.d("index2", String.valueOf(column_index));
         imgPath = cursor.getString(column_index);
 
         String imgName = imgPath.substring(imgPath.lastIndexOf("/")+1);
@@ -239,39 +229,6 @@ public class AddItem extends AppCompatActivity {
 
 
 
-    protected void requestPermissionDenial(){
-        if(ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) !=
-                PackageManager.PERMISSION_GRANTED){
-            Log.d("check1","check1");
-
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
-                    Manifest.permission.READ_EXTERNAL_STORAGE)) {
-                Log.d("check2","check2");
-            } else {
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},1);
-                Log.d("check3","check3");
-            }
-        }
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
-        switch (requestCode) {
-            case 1 : {
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-
-
-                } else {
-
-                }
-                return;
-            }
-
-
-        }
-
-
-    }
 
 
 

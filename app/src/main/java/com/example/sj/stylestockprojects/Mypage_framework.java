@@ -45,7 +45,7 @@ public class Mypage_framework extends Fragment {
     private ArrayList<UserDTO> userDTOS = new ArrayList<>();
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
-    private Button total_logout;
+    private Button total_logout,mypage_info;
 
     public static OAuthLogin mOAuthLoginModule;
 
@@ -83,6 +83,7 @@ public class Mypage_framework extends Fragment {
         final RadioButton malerb = (RadioButton) view.findViewById(R.id.male_gender);
         final RadioButton femalerb = (RadioButton) view.findViewById(R.id.femal_gender);
         total_logout = (Button)view.findViewById(R.id.total_logout);
+        mypage_info = (Button)view.findViewById(R.id.mypage_info);
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -151,10 +152,24 @@ public class Mypage_framework extends Fragment {
                 TotalLogout();
             }
         });
+        mypage_info.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(),Mypage_information.class);
+                Bundle bundle = new Bundle();
+                bundle.clear();
 
+                bundle.putString("username",user_name);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
 
         return view;
     }
+
+
+
 
     //소셜로그인 통합 로그아웃
     private void TotalLogout(){

@@ -48,12 +48,12 @@ dependencies {
     implementation group: 'com.kakao.sdk', name: 'usermgmt', version: project.KAKAO_SDK_VERSION
     implementation files('libs/jsoup-1.11.3.jar')
 
-    compile files('libs/naveridlogin_android_sdk_4.2.0.aar')
+    implementation files('libs/naveridlogin_android_sdk_4.2.0.aar')
 
-    compile 'com.android.support:appcompat-v7:27.1.1'
-    compile 'com.android.support:support-core-utils:27.1.1'
-    compile 'com.android.support:customtabs:27.1.1'
-    compile 'com.android.support:support-v4:27.1.1'
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support:support-core-utils:27.1.1'
+    implementation 'com.android.support:customtabs:27.1.1'
+    implementation 'com.android.support:support-v4:27.1.1'
 }
 
 

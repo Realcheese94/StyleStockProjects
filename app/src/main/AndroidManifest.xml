@@ -39,6 +39,7 @@
             android:name=".ViewItem"
             android:theme="@style/Theme.AppCompat.Light.Dialog" />
         <activity android:name=".LoginActivity" />
+        <activity android:name=".Mypage_information"/>
 
         <provider
             android:name="android.support.v4.content.FileProvider"
