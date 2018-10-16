@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:layout_margin="15dp"
+            android:background="@drawable/stylesotck"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end|right">
+            <Button
+                android:id="@+id/mypage_info"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="8dp"
+                android:background="@drawable/settings"/>
+        </LinearLayout>
+
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:layout_centerInParent="true"
+            android:src="#d6d6d6"
+            android:scaleType="fitCenter" />
+
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_gravity="center"
+            android:scaleType="fitCenter"
+            android:layout_centerInParent="true"
+            android:src="@drawable/user"/>
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:orientation="horizontal"
+        android:gravity="center">
+        <TextView
+            android:id="@+id/login_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="사용자"
+            android:textColorHighlight="#000000"
+            android:textSize="30dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="님의 옷장"
+            android:textSize="25dp"
+            android:textColor="#706f6f"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:orientation="horizontal"
+        android:gravity="center">
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_margin="3dp"
+            android:src="@drawable/female"/>
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_margin="3dp"
+            android:src="@drawable/masculine"/>
+        <TextView
+            android:id="@+id/login_age"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="나이"
+            android:layout_marginLeft="10dp"
+            android:textSize="20dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="살"
+            android:textSize="20dp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginHorizontal="5dp"
+            android:src="@drawable/notice_imageview"/>
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginHorizontal="5dp"
+            android:src="@drawable/question_imageview"/>
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginHorizontal="5dp"
+            android:src="@drawable/version_imageview"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center|bottom"
+        >
+        <Button
+            android:id="@+id/total_logout"
+            android:layout_width="320dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="3dp"
+            android:text="로그아웃"
+            android:background="@drawable/borderline"/>
+
+
+    </LinearLayout>
+
+    <!--여기부터 지우면 됨-->
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="  이름 "
+            android:textSize="25dp"
+            android:textAlignment="center"/>
+        <EditText
+            android:id="@+id/user_name"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="이름을 입력해주세요"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="  나이 "
+            android:textSize="25dp"
+            android:textAlignment="center"/>
+        <EditText
+            android:id="@+id/user_age"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:maxLength="2"
+            android:hint="나이를 입력해주세요"
+            android:inputType="number"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="  성별 "
+            android:textSize="25dp"/>
+        <RadioGroup
+            android:id="@+id/user_gender"
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
+            <RadioButton
+                android:id="@+id/male_gender"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:checked="true"
+                android:text="남자"/>
+            <RadioButton
+                android:id="@+id/femal_gender"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="여자"/>
+
+        </RadioGroup>
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/infosave_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="저장 하기" />
+
+
+</LinearLayout>
+<!--
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="이름"
+        android:textAlignment="center"/>
+    <EditText
+        android:id="@+id/user_name"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="이름을 입력해주세요"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="나이"
+        android:textAlignment="center"/>
+    <EditText
+        android:id="@+id/user_age"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:maxLength="2"
+        android:hint="나이를 입력해주세요"
+        android:inputType="number"/>
+    <RadioGroup
+        android:id="@+id/user_gender"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+        <RadioButton
+            android:id="@+id/male_gender"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:checked="true"
+            android:text="남자"/>
+        <RadioButton
+            android:id="@+id/femal_gender"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="여자"/>
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/infosave_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="저장 하기" />
+
+    <Button
+        android:id="@+id/kakao_logout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="카카오톡 로그아웃"
+        android:layout_marginTop="80dp"
+        android:backgroundTint="@color/com_kakao_button_background_press"/>
+
+
+</LinearLayout>-->

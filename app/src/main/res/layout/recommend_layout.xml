@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="추천 받고싶은 아이템을 선택해주세요"/>
+<Spinner
+    android:id="@+id/recommend_spinner"
+    android:layout_marginTop="50dp"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    ></Spinner>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_marginTop="100dp"
+        android:id="@+id/recommend_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"></android.support.v7.widget.RecyclerView>
+
+</RelativeLayout>
