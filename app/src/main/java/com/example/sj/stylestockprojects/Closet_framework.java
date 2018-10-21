@@ -45,7 +45,7 @@ public class Closet_framework extends Fragment {
     Spinner closet_spinner;
     RecyclerView recyclerView;
 
-    private String catagory="top";
+    private String catagory="Top";
     private FirebaseDatabase mDatabase;
     private DatabaseReference mReference;
     private ChildEventListener mChild;

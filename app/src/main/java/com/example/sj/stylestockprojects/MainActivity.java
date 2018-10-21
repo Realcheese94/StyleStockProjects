@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onStart(){
-        //loadFragment(new Closet_framework());
+        loadFragment(new Closet_framework());
 
         super.onStart();
 

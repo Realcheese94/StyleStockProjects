@@ -18,8 +18,8 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(icicle);
         setContentView(R.layout.splash_main);
 
-        TopJsoupAsyncTask topJsoupAsyncTask = new TopJsoupAsyncTask();
-        topJsoupAsyncTask.execute();
+        //TopJsoupAsyncTask topJsoupAsyncTask = new TopJsoupAsyncTask();
+        //topJsoupAsyncTask.execute();
         /* SPLASH_DISPLAY_LENGTH 뒤에 메뉴 액티비티를 실행시키고 종료한다.*/
         new Handler().postDelayed(new Runnable(){
             @Override
