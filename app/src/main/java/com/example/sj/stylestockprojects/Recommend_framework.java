@@ -32,7 +32,7 @@ public class Recommend_framework extends Fragment {
     Spinner recommend_spinner;
     RecyclerView recyclerView;
     private ArrayList<Product> Products = new ArrayList<>();
-    private String catagory = "top";
+    private String catagory = "TOP";
     private FirebaseDatabase mDatabase;
     private DatabaseReference mReference;
     private String username;
@@ -84,19 +84,19 @@ public class Recommend_framework extends Fragment {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 switch (i){
                     case 0:
-                        catagory="top";
+                        catagory="TOP";
                         break;
                     case 1:
-                        catagory="bottom";
+                        catagory="BOTTOM";
                         break;
                     case 2:
-                        catagory="acc";
+                        catagory="ACC";
                         break;
                     case 3:
-                        catagory="shoes";
+                        catagory="SHOES";
                         break;
                     case 4:
-                        catagory="hat";
+                        catagory="HAT";
                         break;
                 }
                 Log.e("michal_catagory",catagory);

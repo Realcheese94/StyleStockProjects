@@ -30,7 +30,7 @@ public class TopJsoupAsyncTask extends AsyncTask<String, Void, String> {
             String item_name = strings[0];
             Log.e("crawl_item",item_name);
 
-     //소녀나라
+            //소녀나라
             target_page = "https://www.sonyunara.com/search/search.php?orby=best&crema-query="+item_name+"&search_keyword="+item_name;
             Document document1 = Jsoup.connect(target_page).get();
             Elements img_list = document1.select("div.thumb img");
@@ -43,8 +43,8 @@ public class TopJsoupAsyncTask extends AsyncTask<String, Void, String> {
                 url_list1 = url_list1 + src + "-";
             }
 
-     //메롱샵
-           target_page = "http://merongshop.com/product/search.html?banner_action=&keyword="+item_name;
+            //메롱샵
+            target_page = "http://merongshop.com/product/search.html?banner_action=&keyword="+item_name;
             Document document2 = Jsoup.connect(target_page).get();
             Elements img_list2 = document2.select("div.thumbnail img");
             Log.e("url_test", img_list.toString());
@@ -59,7 +59,7 @@ public class TopJsoupAsyncTask extends AsyncTask<String, Void, String> {
             }
             result_url = url_list1 + url_list2;
 
-     //리틀블랙
+            //리틀블랙
             target_page = "http://littleblack.co.kr/product/search.html?banner_action=&keyword="+item_name;
             Document document3 = Jsoup.connect(target_page).get();
             Elements img_list3 = document3.select("div.thumbnail img");
@@ -75,7 +75,7 @@ public class TopJsoupAsyncTask extends AsyncTask<String, Void, String> {
             result_url = result_url + url_list3;
 
 
-    ///임블리
+            ///임블리
 
             target_page = "http://imvely.com/product/search.html?view_type=&supplier_code=&category_no=&search_type=product_name&keyword="+item_name;
             Document document4 = Jsoup.connect(target_page).get();

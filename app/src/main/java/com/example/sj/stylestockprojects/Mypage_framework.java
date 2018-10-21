@@ -13,8 +13,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.sj.stylestockprojects.Firebase.PersonUpload;
@@ -31,6 +33,8 @@ import com.nhn.android.naverlogin.OAuthLogin;
 
 import java.util.ArrayList;
 
+import static com.example.sj.stylestockprojects.R.drawable.masculine_b;
+
 public class Mypage_framework extends Fragment {
     Context mContext;
 
@@ -46,6 +50,7 @@ public class Mypage_framework extends Fragment {
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
     private Button total_logout,mypage_info;
+    private TextView loginname,loginage;
 
     public static OAuthLogin mOAuthLoginModule;
 
@@ -79,11 +84,12 @@ public class Mypage_framework extends Fragment {
         name = (EditText) view.findViewById(R.id.user_name);
         final RadioGroup gender = (RadioGroup) view.findViewById(R.id.user_gender);
         final EditText age = (EditText) view.findViewById(R.id.user_age);
-        Button saveButton = (Button) view.findViewById(R.id.infosave_button);
-        final RadioButton malerb = (RadioButton) view.findViewById(R.id.male_gender);
-        final RadioButton femalerb = (RadioButton) view.findViewById(R.id.femal_gender);
+        final ImageView malerb = (ImageView) view.findViewById(R.id.male_);
+        final ImageView femalerb = (ImageView) view.findViewById(R.id.female_);
         total_logout = (Button)view.findViewById(R.id.total_logout);
         mypage_info = (Button)view.findViewById(R.id.mypage_info);
+        loginname = (TextView) view.findViewById(R.id.login_name);
+        loginage = (TextView) view.findViewById(R.id.login_age);
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -94,19 +100,25 @@ public class Mypage_framework extends Fragment {
                     Log.e("michal", dataSnapshot.getValue().toString());
                     UserDTO userDTO = dataSnapshot.getValue(UserDTO.class);
                     Log.e("michal_info", userDTO.getName());
-                    name.setText(userDTO.getName().toString());
+                    user_name = userDTO.getName().toString();
+                    loginname.setText(userDTO.getName().toString());
 
                     Log.e("michal_age", userDTO.getAge());
-                    age.setText(userDTO.getAge());
+                    user_age = userDTO.getAge();
+                    loginage.setText(userDTO.getAge());
 
                     if (userDTO.getGender().equals("남자")) {
-                        gender.check(R.id.male_gender);
+                        malerb.setImageResource(R.drawable.masculine_b);
+                        user_gender = userDTO.getGender();
                     } else {
-                        gender.check(R.id.femal_gender);
+                        femalerb.setImageResource(R.drawable.female_r);
+                        user_gender = userDTO.getGender();
                     }
 
 
                 }
+
+
             }
 
             @Override
@@ -117,7 +129,7 @@ public class Mypage_framework extends Fragment {
         });
 
 
-        saveButton.setOnClickListener(new View.OnClickListener() {
+        /*saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -144,7 +156,7 @@ public class Mypage_framework extends Fragment {
 
 
             }
-        });
+        });*/
         //통합 로그아웃
         total_logout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -159,17 +171,19 @@ public class Mypage_framework extends Fragment {
                 Bundle bundle = new Bundle();
                 bundle.clear();
 
+                bundle.putString("id",id);
                 bundle.putString("username",user_name);
+                bundle.putString("age",user_age);
+                bundle.putString("gender",user_gender);
                 intent.putExtras(bundle);
+                intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(intent);
             }
         });
 
+
         return view;
     }
-
-
-
 
     //소셜로그인 통합 로그아웃
     private void TotalLogout(){

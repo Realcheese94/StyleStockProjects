@@ -78,11 +78,13 @@
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_margin="3dp"
+            android:id="@+id/female_"
             android:src="@drawable/female"/>
         <ImageView
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_margin="3dp"
+            android:id="@+id/male_"
             android:src="@drawable/masculine"/>
         <TextView
             android:id="@+id/login_age"
@@ -129,7 +131,7 @@
             android:id="@+id/total_logout"
             android:layout_width="320dp"
             android:layout_height="35dp"
-            android:layout_marginTop="3dp"
+            android:layout_marginTop="10dp"
             android:text="로그아웃"
             android:background="@drawable/borderline"/>
 
@@ -139,7 +141,7 @@
     <!--여기부터 지우면 됨-->
 
 
-    <LinearLayout
+    <!--<LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -205,7 +207,7 @@
         android:id="@+id/infosave_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="저장 하기" />
+        android:text="저장 하기" />-->
 
 
 </LinearLayout>

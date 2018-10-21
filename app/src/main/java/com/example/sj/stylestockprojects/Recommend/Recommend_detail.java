@@ -147,7 +147,7 @@ public class Recommend_detail extends AppCompatActivity {
     @Override
     public void onBackPressed(){
         super.onBackPressed();
-          finish();
+        finish();
     }
 
 }

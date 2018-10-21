@@ -45,7 +45,7 @@ public class Closet_framework extends Fragment {
     Spinner closet_spinner;
     RecyclerView recyclerView;
 
-    private String catagory="Top";
+    private String catagory="TOP";
     private FirebaseDatabase mDatabase;
     private DatabaseReference mReference;
     private ChildEventListener mChild;
@@ -115,19 +115,19 @@ public class Closet_framework extends Fragment {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 switch (i){
                     case 0:
-                        catagory="top";
+                        catagory="TOP";
                         break;
                     case 1:
-                        catagory="bottom";
+                        catagory="BOTTOM";
                         break;
                     case 2:
-                        catagory="acc";
+                        catagory="ACC";
                         break;
                     case 3:
-                        catagory="shoes";
+                        catagory="SHOES";
                         break;
                     case 4:
-                        catagory="hat";
+                        catagory="HAT";
                         break;
                 }
                 Log.e("michal_catagory",catagory);
@@ -216,7 +216,7 @@ public class Closet_framework extends Fragment {
 
                         Intent intent = new Intent(getActivity(),ViewItem.class);
                         bundle.putString("username",username);
-                        bundle.putString("catagory",closet_spinner.getSelectedItem().toString());
+                        bundle.putString("catagory",catagory);
 
                         bundle.putString("brand",Products.get(pos).product_brand);
                         bundle.putString("price",Products.get(pos).product_price);

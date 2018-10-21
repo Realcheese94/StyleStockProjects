@@ -22,19 +22,43 @@
         <com.facebook.login.widget.LoginButton
             android:id="@+id/buttonId"
             android:layout_width="245dp"
-            android:layout_height="50dp"/>
+            android:layout_height="50dp"
+            android:visibility="gone"/>
+
+        <Button
+            android:layout_width="245dp"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            android:id="@+id/facebookBtn"
+            android:background= "@drawable/facebook_loginbtn"/>
 
         <com.kakao.usermgmt.LoginButton
             android:id="@+id/com_kakao_login"
             android:layout_width="245dp"
             android:layout_height="50dp"
-            android:layout_marginTop="20dp"/>
+            android:layout_marginTop="20dp"
+            android:visibility="gone"/>
+        <Button
+            android:layout_width="245dp"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            android:id="@+id/kakaoBtn"
+            android:background= "@drawable/kakao_loginbtn"/>
+
 
         <com.nhn.android.naverlogin.ui.view.OAuthLoginButton
             android:id="@+id/buttonOAuthLoginImg"
             android:layout_width="245dp"
             android:layout_height="50dp"
-            android:layout_marginTop="20dp"/>
+            android:layout_marginTop="20dp"
+            android:visibility="gone"/>
+
+        <Button
+            android:layout_width="245dp"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            android:id="@+id/naverBtn"
+            android:background= "@drawable/naver_loginbtn"/>
     </LinearLayout>
 
 </RelativeLayout>
