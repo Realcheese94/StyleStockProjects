@@ -12,7 +12,7 @@
 -회원 정보 저장 및 수정 관리
 -서버와의 채팅/공지 받기
 -자신의 옷 이미지로 어플리케이션 내 코디 가능
-<img width="150" height="150">
+<img width="80" height="100">
 ![kakaotalk_20181126_005131389](https://user-images.githubusercontent.com/35086477/49069420-8fef1400-f26c-11e8-8738-3b527824c6ed.jpg)
 ![kakaotalk_20181126_005134499](https://user-images.githubusercontent.com/35086477/49069419-8fef1400-f26c-11e8-92c5-903cc74119a4.jpg)
 ![kakaotalk_20181126_005134317](https://user-images.githubusercontent.com/35086477/49069418-8fef1400-f26c-11e8-9512-08edee119bfb.jpg)
