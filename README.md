@@ -41,6 +41,6 @@
 ![kakaotalk_20181126_005131965](https://user-images.githubusercontent.com/35086477/49069409-8ebde700-f26c-11e8-97bb-65fab16eb175.jpg)
 ![kakaotalk_20181126_005131718](https://user-images.githubusercontent.com/35086477/49069408-8e255080-f26c-11e8-8cb7-12c004b60155.jpg)
 <H5>해당상품을 클릭하면 동일 혹은 유사한 상품을 추천해주고 이를 클릭하면 해당 판매 사이트로 이동합니다.</H5>
-<br><br>
+
 ![kakaotalk_20181126_005131389](https://user-images.githubusercontent.com/35086477/49069420-8fef1400-f26c-11e8-8738-3b527824c6ed.jpg)
 <H6>개인별로 정보를 저장 및 수정이 가능합니다.</H6>
