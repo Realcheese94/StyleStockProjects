@@ -13,7 +13,7 @@
 -서버와의 채팅/공지 받기
 -자신의 옷 이미지로 어플리케이션 내 코디 가능
 
-![KakaoTalk_20181126_005134499.jpg]({{site.baseurl}}/KakaoTalk_20181126_005134499.jpg)
+[KakaoTalk_20181126_005134499.jpg]({{site.baseurl}}/KakaoTalk_20181126_005134499.jpg)
 ![KakaoTalk_20181126_005134317.jpg]({{site.baseurl}}/KakaoTalk_20181126_005134317.jpg)
 ![KakaoTalk_20181126_005134124.jpg]({{site.baseurl}}/KakaoTalk_20181126_005134124.jpg)
 
@@ -30,5 +30,3 @@
 ![KakaoTalk_20181126_005131965.jpg]({{site.baseurl}}/KakaoTalk_20181126_005131965.jpg)
 ![KakaoTalk_20181126_005131718.jpg]({{site.baseurl}}/KakaoTalk_20181126_005131718.jpg)
 ![KakaoTalk_20181126_005131389.jpg]({{site.baseurl}}/KakaoTalk_20181126_005131389.jpg)
-
-
