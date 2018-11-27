@@ -16,9 +16,13 @@
 ![KakaoTalk_20181126_005134499.jpg]({{site.baseurl}}/KakaoTalk_20181126_005134499.jpg)
 ![KakaoTalk_20181126_005134317.jpg]({{site.baseurl}}/KakaoTalk_20181126_005134317.jpg)
 ![KakaoTalk_20181126_005134124.jpg]({{site.baseurl}}/KakaoTalk_20181126_005134124.jpg)
-![]({{site.baseurl}}//KakaoTalk_20181126_005133745.jpg)![KakaoTalk_20181126_005133745.jpg]({{site.baseurl}}/KakaoTalk_20181126_005133745.jpg)
+
+![]({{site.baseurl}}//KakaoTalk_20181126_005133745.jpg)
+
+![KakaoTalk_20181126_005133745.jpg]({{site.baseurl}}/KakaoTalk_20181126_005133745.jpg)
 
 ![KakaoTalk_20181126_005133336.jpg]({{site.baseurl}}/KakaoTalk_20181126_005133336.jpg)
+
 ![KakaoTalk_20181126_005132894.jpg]({{site.baseurl}}/KakaoTalk_20181126_005132894.jpg)
 
 ![KakaoTalk_20181126_005132572.jpg]({{site.baseurl}}/KakaoTalk_20181126_005132572.jpg)
