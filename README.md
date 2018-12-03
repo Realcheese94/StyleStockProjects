@@ -18,7 +18,8 @@
 
 ![kakaotalk_20181126_005134499](https://user-images.githubusercontent.com/35086477/49069419-8fef1400-f26c-11e8-92c5-903cc74119a4.jpg)
 <H5>스타일스톡 초기화면 입니다.</H5><br><br>
-
+![kakaotalk_20181204_030102694](https://user-images.githubusercontent.com/35086477/49392203-1cb83700-f771-11e8-8fc6-a8e56a259633.jpg)
+<H5>소셜 로그인을 통해 3가지 방법으로 회원가입이 가능합니다.</H5><br><br>
 ![kakaotalk_20181126_005134317](https://user-images.githubusercontent.com/35086477/49069418-8fef1400-f26c-11e8-9512-08edee119bfb.jpg)
 <H5>카테고리 별로 자신의 옷을 볼 수 있습니다.</H5><br><br>
 
